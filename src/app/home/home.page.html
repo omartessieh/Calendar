@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Blank </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item lines="none">
+    <ion-datetime
+      min="1994-03-14"
+      max="2050-12-09"
+      displayFormat="MMM DD, YYYY"
+      pickerFormat="DD MMM YYYY"
+      presentation="date"
+      [showDefaultTitle]="true"
+      [(ngModel)]="selectedDate"
+      (ionChange)="filterEventsByDate($event)"
+      [highlightedDates]="highlightedDates"
+      color="rose"
+    >
+    </ion-datetime>
+  </ion-item>
+
+  <ion-list *ngIf="selectedDate">
+    <ion-item *ngFor="let event of eventsForDate" lines="full">
+      <ion-label>{{ event.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
